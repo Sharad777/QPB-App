@@ -5,6 +5,8 @@ import { HomePage } from '../pages/home/home';
 import { QuestionPage } from '../pages/question/question';
 import { QuestionPaperPage } from '../pages/question-paper/question-paper';
 import { QuestionConfigModalPage } from '../pages/question-config-modal/question-config-modal';
+import { QuestionPaperConfigModalPage } from '../pages/question-paper-config-modal/question-paper-config-modal';
+import { MasterdataProvider } from '../providers/masterdata-provider';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { QuestionConfigModalPage } from '../pages/question-config-modal/question
     HomePage,
     QuestionPage,
     QuestionPaperPage,
-    QuestionConfigModalPage
+    QuestionConfigModalPage,
+    QuestionPaperConfigModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,9 +26,10 @@ import { QuestionConfigModalPage } from '../pages/question-config-modal/question
     HomePage,
     QuestionPage,
     QuestionPaperPage,
-    QuestionConfigModalPage
+    QuestionConfigModalPage,
+    QuestionPaperConfigModalPage
   ],
-  providers: [ { provide: ErrorHandler, useClass: IonicErrorHandler } ]
+  providers: [ { provide: ErrorHandler, useClass: IonicErrorHandler }, MasterdataProvider ]
 })
 export class AppModule {
 }
