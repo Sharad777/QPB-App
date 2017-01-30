@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configure</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="ok()">
+        <span ion-text color="primary" showWhen="ios">Ok</span>
+        <ion-icon name="checkmark" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form id="configOptionsForm" >
+    <ion-item>
+      <ion-label>
+        Type
+      </ion-label>
+      <ion-select [(ngModel)]="quesType" required name="question_type">
+        <ion-option value="{{type.id}}" *ngFor="let type of question_types">{{type.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Standard
+      </ion-label>
+      <ion-select [(ngModel)]="standard" required name="standard">
+        <ion-option value="{{standard.id}}" *ngFor="let standard of standards">{{standard.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Marks
+      </ion-label>
+      <ion-input type="number" min="0" [(ngModel)]="marks" required name="marks"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Complexity Level
+      </ion-label>
+      <ion-select [(ngModel)]="complexityLevel" required name="complexity_level">
+        <ion-option value="{{level.id}}" *ngFor="let level of complexity_levels">{{level.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </form>
+</ion-content>

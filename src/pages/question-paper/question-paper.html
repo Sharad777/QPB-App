@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>Question Paper</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="goToHome()" icon-only>
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button (click)="configureQuestionPaper()">
+        <span ion-text color="primary" showWhen="ios">Configure</span>
+        <ion-icon name="cog" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="showQuesPaperTemplate">
+    <div class="badge-container">
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.marks">
+        {{questionPaperConfigOptions.maximumMarks}}
+      </ion-badge>
+
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.standard">
+        {{getMasterDataValueById('standards',questionPaperConfigOptions.standard)}}
+      </ion-badge>
+
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.complexityLevel">
+        {{getMasterDataValueById('complexity_levels', questionPaperConfigOptions.complexityLevel)}}
+      </ion-badge>
+    </div>
+  </div>
+</ion-content>

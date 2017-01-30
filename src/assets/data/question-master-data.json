@@ -1,0 +1,60 @@
+{
+  "question_types": [
+    {
+      "id": "1",
+      "name": "Subjective"
+    },
+    {
+      "id": "2",
+      "name": "Objective"
+    },
+    {
+      "id": "3",
+      "name": "Fill in the Blanks"
+    },
+    {
+      "id": "4",
+      "name": "Match the following"
+    },
+    {
+      "id": "5",
+      "name": "Common Passage"
+    }
+  ],
+  "standards": [
+    {
+      "id": "1",
+      "name": "First"
+    },
+    {
+      "id": "2",
+      "name": "Second"
+    },
+    {
+      "id": "3",
+      "name": "Third"
+    },
+    {
+      "id": "4",
+      "name": "Fourth"
+    },
+    {
+      "id": "5",
+      "name": "Fifth"
+    }
+  ],
+  "complexity_levels": [
+    {
+      "id": "1",
+      "name": "Easy"
+    },
+    {
+      "id": "2",
+      "name": "Medium"
+    },
+    {
+      "id": "3",
+      "name": "Hard"
+    }
+  ]
+}
