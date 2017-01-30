@@ -38,7 +38,6 @@ export class QuestionPaperPage {
 
     modal.onDidDismiss(data => {
       this.questionPaperConfigOptions = data;
-      console.log(this.questionPaperConfigOptions.standard);
       setTimeout(() => {
         if (this.questionPaperConfigOptions !== {}) {
           this.initializeQuestionPaperTemplate();

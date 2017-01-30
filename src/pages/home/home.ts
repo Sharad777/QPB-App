@@ -18,7 +18,6 @@ export class HomePage {
    * Create a new Question
    */
   createQuestion() {
-    console.log('create');
     this.navCtrl.push(QuestionPage);
   }
 

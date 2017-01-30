@@ -43,12 +43,9 @@ export class QuestionPage implements OnInit {
 
     modal.onDidDismiss(data => {
       this.questionConfigOptions = data;
-      console.log(data);
       if (this.questionConfigOptions !== {}) {
         this.initializeQuestionTemplate();
       }
-    });
-
     modal.present();
   }
 

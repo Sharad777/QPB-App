@@ -32,7 +32,6 @@ export class QuestionPaperConfigModalPage {
     this.standards = masterData.standards;
     this.complexityLevels = masterData.complexity_levels;
     let configOptions = this.navParams.data.configOptions;
-    console.log(configOptions);
     if (configOptions) {
       this.maximumMarks = configOptions.maximumMarks;
       this.standard = configOptions.standard;

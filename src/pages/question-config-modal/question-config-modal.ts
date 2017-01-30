@@ -31,12 +31,10 @@ export class QuestionConfigModalPage {
 
   ionViewDidLoad() {
     let masterData = this.navParams.data.masterData;
-    console.info(masterData);
     this.complexity_levels = masterData.complexity_levels;
     this.question_types = masterData.question_types;
     this.standards = masterData.standards;
     let configOptions = this.navParams.data.configOptions;
-    console.log(configOptions);
     if (configOptions) {
       this.marks = configOptions.marks;
       this.standard = configOptions.standard;
