@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { QuestionConfigOptions } from '../../common/question-config-options';
-import { MasterdataProvider } from '../../providers/masterdata-provider';
 
 @Component({
   selector: 'page-question-config-modal',
@@ -27,25 +26,23 @@ export class QuestionConfigModalPage {
 
   public configOptions: QuestionConfigOptions;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-              public masterData: MasterdataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
-    this.masterData.getQuestionMasterData().subscribe(resp => {
-      let masterData = resp.json();
-      this.complexity_levels = masterData.complexity_levels;
-      this.question_types = masterData.question_types;
-      this.standards = masterData.standards;
-      let configOptions = this.navParams.data.configOptions;
-      console.log(configOptions);
-      if (configOptions) {
-        this.marks = configOptions.marks;
-        this.standard = configOptions.standard;
-        this.quesType = configOptions.quesType;
-        this.complexityLevel = configOptions.complexityLevel;
-      }
-    });
+    let masterData = this.navParams.data.masterData;
+    console.info(masterData);
+    this.complexity_levels = masterData.complexity_levels;
+    this.question_types = masterData.question_types;
+    this.standards = masterData.standards;
+    let configOptions = this.navParams.data.configOptions;
+    console.log(configOptions);
+    if (configOptions) {
+      this.marks = configOptions.marks;
+      this.standard = configOptions.standard;
+      this.quesType = configOptions.quesType;
+      this.complexityLevel = configOptions.complexityLevel;
+    }
   }
 
   ok() {

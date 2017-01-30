@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { QuestionConfigModalPage } from '../question-config-modal/question-config-modal';
 import { QuestionConfigOptions } from '../../common/question-config-options';
+import { MasterDataProvider } from '../../providers/master-data-provider';
+import { MasterDataResolver } from '../../providers/master-data-resolver';
 
 @Component({
   selector: 'page-question',
@@ -15,14 +17,19 @@ export class QuestionPage implements OnInit {
 
   public showQuesTemplate: boolean;
 
+  public masterData: Object;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
-              public viewCtrl: ViewController) {
+              public viewCtrl: ViewController, public masterDataProvider: MasterDataProvider, public masterDataResolver: MasterDataResolver) {
     this.hasOptions = false;
     this.showQuesTemplate = false;
   }
 
   ngOnInit() {
-    this.configureQuestion();
+    this.masterDataProvider.getQuestionMasterData().subscribe(resp => {
+      this.masterData = resp.json();
+      this.configureQuestion();
+    });
   }
 
   /**
@@ -30,6 +37,7 @@ export class QuestionPage implements OnInit {
    */
   configureQuestion() {
     let modal = this.modalCtrl.create(QuestionConfigModalPage, {
+      masterData: this.masterData,
       configOptions: this.questionConfigOptions
     });
 
@@ -55,14 +63,20 @@ export class QuestionPage implements OnInit {
    * Shows the Template in UI to create a new question based on the config options
    */
   initializeQuestionTemplate() {
-    this.showQuesTemplate = true;
-    switch (this.questionConfigOptions.quesType) {
+    switch (parseInt(this.questionConfigOptions.quesType.toString())) {
       case 1:
-        this.hasOptions = false;
-        break;
-      default:
+        console.log('1');
+        this.showQuesTemplate = true;
         this.hasOptions = false;
         break;
     }
   }
+
+  /**
+   * Returns the value against each of the master data object's id
+   */
+  getMasterDataValueById(masterDataType: string, id: number): string {
+    return this.masterDataResolver.resolveMasterDataValueById(this.masterData[ masterDataType ], id);
+  }
+
 }

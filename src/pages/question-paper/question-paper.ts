@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { QuestionPaperConfigModalPage } from '../question-paper-config-modal/question-paper-config-modal';
 import { QuestionPaperConfigOptions } from '../../common/question-paper-config-options';
+import { MasterDataProvider } from '../../providers/master-data-provider';
 
-/*
- Generated class for the QuestionPaper page.
-
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
- */
 @Component({
   selector: 'page-question-paper',
   templateUrl: 'question-paper.html'
@@ -16,18 +11,27 @@ import { QuestionPaperConfigOptions } from '../../common/question-paper-config-o
 export class QuestionPaperPage {
   public questionPaperConfigOptions: QuestionPaperConfigOptions;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+              public masterDataProvider: MasterDataProvider) {
   }
 
+  public masterData: Object;
+
   ionViewDidLoad() {
-    this.configureQuestionPaper();
+    this.masterDataProvider.getQuestionPaperMasterData().subscribe(resp => {
+      this.masterData = resp.json();
+      this.configureQuestionPaper();
+    });
   }
 
   /**
    * Presents a Modal with Configuration options for Question
    */
   configureQuestionPaper() {
-    let modal = this.modalCtrl.create(QuestionPaperConfigModalPage, { configOptions: this.questionPaperConfigOptions });
+    let modal = this.modalCtrl.create(QuestionPaperConfigModalPage, {
+      masterData: this.masterData,
+      configOptions: this.questionPaperConfigOptions
+    });
 
     modal.onDidDismiss(data => {
       this.questionPaperConfigOptions = data;

@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { QuestionPaperConfigOptions } from '../../common/question-paper-config-options';
-import { MasterdataProvider } from '../../providers/masterdata-provider';
 
 @Component({
   selector: 'page-question-paper-config-modal',
@@ -24,24 +23,21 @@ export class QuestionPaperConfigModalPage {
 
   public standards: Array<Object>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-              public masterDataProvider: MasterdataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   ionViewDidLoad() {
-    this.masterDataProvider.getQuestionPaperMasterData().subscribe(resp => {
-      let masterData = resp.json();
-      this.standards = masterData.standards;
-      this.complexityLevels = masterData.complexity_levels;
-      let configOptions = this.navParams.data.configOptions;
-      console.log(this.configOptions);
-      if (configOptions) {
-        this.maximumMarks = configOptions.maximumMarks;
-        this.standard = configOptions.standard;
-        this.complexityLevel = configOptions.complexityLevel;
-      }
-    });
 
+    let masterData = this.navParams.data.masterData;
+    this.standards = masterData.standards;
+    this.complexityLevels = masterData.complexity_levels;
+    let configOptions = this.navParams.data.configOptions;
+    console.log(this.configOptions);
+    if (configOptions) {
+      this.maximumMarks = configOptions.maximumMarks;
+      this.standard = configOptions.standard;
+      this.complexityLevel = configOptions.complexityLevel;
+    }
   }
 
   ok() {

@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
-export class MasterdataProvider {
+export class MasterDataProvider {
 
   constructor(public http: Http) {
     console.log('Hello MasterdataProvider Provider');
@@ -16,9 +16,5 @@ export class MasterdataProvider {
 
   getQuestionPaperMasterData(): Observable<Response> {
     return this.http.get('./assets/data/question-paper-master-data.json');
-  }
-
-  getMasterDataValueById(masterData: Object, id: number): string {
-    return '';
   }
 }
