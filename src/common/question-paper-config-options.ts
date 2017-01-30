@@ -1,4 +1,4 @@
 export class QuestionPaperConfigOptions {
-  constructor(complexityLevel: number, maximumMarks: number, standard: number) {
+  constructor(public complexityLevel: number, public maximumMarks: number, public standard: number) {
   }
 }

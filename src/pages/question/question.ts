@@ -65,9 +65,11 @@ export class QuestionPage implements OnInit {
   initializeQuestionTemplate() {
     switch (parseInt(this.questionConfigOptions.quesType.toString())) {
       case 1:
-        console.log('1');
         this.showQuesTemplate = true;
         this.hasOptions = false;
+        break;
+      default:
+        this.showQuesTemplate = false;
         break;
     }
   }

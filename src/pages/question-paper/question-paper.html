@@ -20,5 +20,19 @@
 
 
 <ion-content padding>
+  <div *ngIf="showQuesPaperTemplate">
+    <div class="badge-container">
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.marks">
+        {{questionPaperConfigOptions.maximumMarks}}
+      </ion-badge>
 
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.standard">
+        {{getMasterDataValueById('standards',questionPaperConfigOptions.standard)}}
+      </ion-badge>
+
+      <ion-badge item-right *ngIf="questionPaperConfigOptions.complexityLevel">
+        {{getMasterDataValueById('complexity_levels', questionPaperConfigOptions.complexityLevel)}}
+      </ion-badge>
+    </div>
+  </div>
 </ion-content>
