@@ -17,4 +17,8 @@ export class MasterDataProvider {
   getQuestionPaperMasterData(): Observable<Response> {
     return this.http.get('./assets/data/question-paper-master-data.json');
   }
+
+  getOptionTypes(): Observable<Response> {
+    return this.http.get('./assets/data/option-types.json');
+  }
 }

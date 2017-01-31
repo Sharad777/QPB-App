@@ -43,9 +43,12 @@ export class QuestionPage implements OnInit {
 
     modal.onDidDismiss(data => {
       this.questionConfigOptions = data;
+      console.log(data);
       if (this.questionConfigOptions !== {}) {
         this.initializeQuestionTemplate();
       }
+    });
+
     modal.present();
   }
 
@@ -60,15 +63,7 @@ export class QuestionPage implements OnInit {
    * Shows the Template in UI to create a new question based on the config options
    */
   initializeQuestionTemplate() {
-    switch (parseInt(this.questionConfigOptions.quesType.toString())) {
-      case 1:
-        this.showQuesTemplate = true;
-        this.hasOptions = false;
-        break;
-      default:
-        this.showQuesTemplate = false;
-        break;
-    }
+    this.showQuesTemplate = true;
   }
 
   /**

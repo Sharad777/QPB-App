@@ -1,0 +1,22 @@
+<ion-item>
+  <ion-textarea placeholder="Description"></ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-select placeholder="Option Type" (ionChange)="enableAddOptions()">
+    <ion-option *ngFor="let optionType of optionTypes" value="{{optionType.id}}">{{optionType.name}}</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item *ngFor="let option of options">
+  {{option.description}}
+  <button ion-button item-right outline (click)="editOption(option.description)">
+    Edit
+  </button>
+  <button ion-button item-right color="danger" outline (click)="removeOption(option.description)">
+    Remove
+  </button>
+</ion-item>
+<button full ion-button (click)="addOption()" *ngIf="enableAddOption" style="margin-top: 10px;">
+  <ion-icon name="create"></ion-icon>
+  Add Option
+</button>
+

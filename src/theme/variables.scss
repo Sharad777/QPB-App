@@ -1,4 +1,4 @@
-// Ionic Variables and Theming. For more info, please see:
+// Ionic Variables and Theaming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
 $font-path: "../assets/fonts";
 
@@ -76,3 +76,6 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// Font Awesome icon scss
+@import "font-awesome";

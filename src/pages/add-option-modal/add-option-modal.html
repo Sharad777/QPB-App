@@ -1,0 +1,17 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>Option</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="ok()">
+        <span ion-text color="primary" showWhen="ios">Ok</span>
+        <ion-icon name="checkmark" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-textarea [(ngModel)]="description" placeholder="Description"></ion-textarea>
+</ion-content>
