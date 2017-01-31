@@ -23,7 +23,7 @@ module.exports = {
     dest: '{{BUILD}}'
   },
   copyFontAwesomeFonts: {
-    src: ['{{ROOT}}/node_modules/font-awesome/fonts/**/*'],
-    dest: '{{WWW}}/assets/fonts'
+    src: ['{{ROOT}}/node_modules/ionic-framework/fonts/**/*.+(ttf|woff|woff2)', '{{ROOT}}/node_modules/font-awesome/fonts/**/*.+(eot|ttf|woff|woff2|svg)'],
+    dest: '{{WWW}}/fonts/'
   }
 };
