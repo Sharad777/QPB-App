@@ -1,3 +1,9 @@
-/**
- * Created by sharad on 30/01/17.
- */
+export class Option {
+  public id: number;
+  public description: string;
+
+  constructor(description: string, id?: number) {
+    this.id = id;
+    this.description = description;
+  }
+}
